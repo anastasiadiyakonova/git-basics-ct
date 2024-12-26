@@ -1,0 +1,277 @@
+<template>
+    <div class="container full-width">
+        <div
+            class="header full-width slds-border_bottom slds-text-heading_medium slds-theme_shade slds-p-horizontal_medium slds-p-vertical_large">
+            <div class="slds-align_absolute-center">
+                <h1> <b>EDIT PRODUCTS</b> </h1>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="slds-text-heading_small slds-m-top_xx-small"> Pricebook: {pricebooklabel} </p>
+            </div>
+        </div>
+
+        <div class="body full-width medium-content slds-scrollable_y">
+            <table class="slds-table slds-table_bordered"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Product Name">Product Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="List Price">List Price PPU</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Quantity">Quantity</div>
+                        </th>
+                        <template if:true={adminFieldsAcess}>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Estimated Cost">Estimated Cost</div>
+                        </th>
+                        </template>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Amount">Price</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Discounted Price">Discounted Price</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Total">List Price</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Sales Discount">Sales Discount Ratio</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Total Sales Discounted Fee">Total Final Price
+                            </div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="PPU">Final PPU</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="PPU">Limitation Period<sup>*</sup></div>
+                        </th>
+                        <th class="" scope="col">
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr for:each={productlistCopy} for:item="prod" key={prod}>
+                        <td data-label="Product Name">
+                            <div class="word-wrap">{prod.productName}</div>
+                        </td>
+                        <td data-label="List Price">
+                            <div class="slds-truncate">{prod.listPrice}</div>
+                        </td>
+                        <td data-label="Quantity">
+                            <div class="slds-truncate" style="width: 80px">
+                                <lightning-input type="number" value={prod.quantity} onblur={onblurQuantity}
+                                    variant="label-hidden" data-id={prod.id}></lightning-input>
+                            </div>
+                        </td>
+                        <template if:true={adminFieldsAcess}>
+                        <td data-label="Estimated Cost" style="width: 120px">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.estimatedCostTotal} variant="label-hidden" disabled>
+                                </lightning-input>
+                            </div>
+                        </td>
+                        </template>
+                        <td data-label="Amount" style="width: 120px">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.amount} variant="label-hidden" disabled>
+                                </lightning-input>
+                            </div>
+                        </td>                        
+                        <td data-label="Discounted Price" style="width: 120px">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.discountedPrice} variant="label-hidden"
+                                    disabled></lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="Total" style="width: 120px">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.subTotal} variant="label-hidden" disabled>
+                                </lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="Sales Discount" style="width: 80px">
+                            <div class="slds-truncate"> <!-- onblur={onblurSalesDiscount} -->
+                                <lightning-input type="number" value={prod.salesDiscount} 
+                                    variant="label-hidden" step=".01" data-id={prod.id} disabled></lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="Total Sales Discounted Fee">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.totalPrice} variant="label-hidden" data-id={prod.id} step=".01" onblur={onblurTotalPrice}>
+                                </lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="PPU" style="width: 20px">
+                            <div class="slds-truncate">
+                                <lightning-input type="number" value={prod.ppu} variant="label-hidden" step=".0001" disabled>
+                                </lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="Limitation Period">
+                            <div>
+                                <lightning-combobox
+                                    variant="label-hidden"
+                                    value={prod.period}
+                                    placeholder="Please Select"
+                                    options={limitations}
+                                    onchange={onchangeLimitation}
+                                    data-id={prod.id}
+                                    data-prop="limitationPeriod"
+                                    required>
+                                </lightning-combobox>
+                            </div>
+                        </td>
+                        <td>
+                            <lightning-button variant="destructive" label="Delete" onclick={onclickDelete}
+                                data-id={prod.id}></lightning-button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="11">
+                            <div class="empty-div"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="8"></td>
+                        <td class="bold">Total List Fee:</td>
+                        <td class="slds-text-align_right">
+                            <lightning-formatted-number value={totalListFee}></lightning-formatted-number>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+                        <td class="bold">Total Sales List Fee:</td>
+                        <td class="slds-text-align_right">
+                            <lightning-formatted-number value={totalSalesListFee}></lightning-formatted-number>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <template if:true={adminFieldsAcess}>
+                        <tr>
+                            <td colspan="8"></td>
+                            <td class="bold">Total Estimated Cost:</td>
+                            <td class="slds-text-align_right">
+                                <lightning-formatted-number value={totalCost}></lightning-formatted-number>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"></td>
+                            <td class="bold">Total Estimated Gross:</td>
+                            <td class="slds-text-align_right">
+                                <lightning-formatted-number value={totalEstimatedGross} format-style="percent-fixed"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td>
+                            <td></td>
+                        </tr>  
+                    </template>
+                        <tr>
+                            <td colspan="8"></td>
+                            <td class="bold">Discount Ratio:</td>
+                            <td class="slds-text-align_right">
+                                <lightning-formatted-number value={discountRatio} format-style="percent-fixed"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td>
+                            <td></td>
+                        </tr>                    
+                </tbody>
+            </table>
+            <!--
+            <div class="slds-text-align_right slds-p-around_medium bold">
+
+                <div class="slds-m-bottom_small">
+                    <span class="slds-m-right_small slds-text-align_left">Total List Fee:</span>
+                    <span>1234124324</span>
+                </div>
+                
+                <div class="slds-m-bottom_small">
+                    <span class="slds-m-right_small">Total Sales List Fee:</span>
+                    <span>1234124324</span>
+                </div>
+
+                <div class="slds-m-bottom_small">
+                    <span class="slds-m-right_small">Discount Ratio:</span>
+                    <span>1234124324</span>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="footer full-width slds-border_top">
+            <div class="slds-button-group slds-p-around_small slds-text-body_small">
+                <lightning-button onclick={onclickPrevious} variant="neutral" label="Previous"></lightning-button>
+                <lightning-button onclick={onclickCancel} variant="destructive" label="Cancel"
+                    class="slds-m-left_small"></lightning-button>
+                <lightning-button onclick={preSaveAction} variant="brand" label="Save" class="slds-m-left_small">
+                </lightning-button>
+            </div>
+        </div>
+
+    </div>
+
+    <!--***************** Non-ICP Reason Entry Screen *****************-->
+
+    <template if:true={showGetReasonPopup}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"> Non ICP Reason Entry </h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-box slds-theme_shade slds-m-vertical_large">
+                        <div class="slds-button-group">
+                            <div class="slds-button-group-item">
+                                <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                            </div>
+                            <div class="slds-button-group-item slds-m-left_small slds-p-top_xx-small slds-text-body_small">
+                                <p if:true={productLimitError}> You have a couple of item that under MTU limit: </p>
+                                <p if:true={industryTypeError}> Industry of the customer is Non-ICP. Exception of Non-ICP Reason is required. </p>
+                            </div>
+                        </div>
+
+                        <ul class="slds-list_dotted slds-m-top_medium" if:true={productLimitError}>
+                            <li class="slds-text-body_small" for:each={lessThanLimitProducts} for:item="prod" key={prod}>
+                                <p> {prod.productName} </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <lightning-record-edit-form object-api-name={objectApi}
+                                                record-id={recordid}
+                                                onsuccess={handleSuccess}
+                                                onerror={handleError}
+                                                >
+                        <lightning-input-field field-name="Exception_of_Non_ICP_Reason__c"> </lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={submitReason} title="OK">Submit</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+</template>

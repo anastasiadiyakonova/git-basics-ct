@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>Contract Buy-in Campaign 2023</fullName>
+        <default>false</default>
+        <label>Contract Buy-in Campaign 2023</label>
+    </customValue>
+    <customValue>
+        <fullName>Inone Emarsys Attack - Contract Buy-in Campaign 2023</fullName>
+        <default>false</default>
+        <label>Inone Emarsys Attack - Contract Buy-in Campaign 2023</label>
+    </customValue>
+    <customValue>
+        <fullName>InOne Whatsapp Promotion Campaign 2023</fullName>
+        <default>false</default>
+        <label>InOne Whatsapp Promotion Campaign 2023</label>
+    </customValue>
+    <customValue>
+        <fullName>Limit Increase Campaign</fullName>
+        <default>false</default>
+        <label>Limit Increase Campaign</label>
+    </customValue>
+    <customValue>
+        <fullName>Mindbehind - 12+3 Campaign</fullName>
+        <default>false</default>
+        <label>Mindbehind - 12+3 Campaign</label>
+    </customValue>
+    <customValue>
+        <fullName>No More Delayed Deals</fullName>
+        <default>false</default>
+        <label>No More Delayed Deals</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season Promotion Campaign 2020</fullName>
+        <default>false</default>
+        <label>Peak Season Promotion Campaign 2020</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season Promotion Campaign 2021</fullName>
+        <default>false</default>
+        <label>Peak Season Promotion Campaign 2021</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season Promotion Campaign 2022</fullName>
+        <default>false</default>
+        <label>Peak Season Promotion Campaign 2022</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season Promotion Campaign 2023</fullName>
+        <default>false</default>
+        <label>Peak Season Promotion Campaign 2023</label>
+    </customValue>
+    <customValue>
+        <fullName>Warfare Tactic</fullName>
+        <default>false</default>
+        <label>Warfare Tactic</label>
+    </customValue>
+    <customValue>
+        <fullName>Whatsapp Product Discovery</fullName>
+        <default>false</default>
+        <label>Whatsapp Product Discovery</label>
+    </customValue>
+    <customValue>
+        <fullName>Architect Lock Screen</fullName>
+        <default>false</default>
+        <label>Architect Lock Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Web Push Growth to Enterprise Offer</fullName>
+        <default>false</default>
+        <label>Web Push Growth to Enterprise Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>User Analytics Free Trial Offer</fullName>
+        <default>false</default>
+        <label>User Analytics Free Trial Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Email: Growth to Enterprise Offer</fullName>
+        <default>false</default>
+        <label>Email: Growth to Enterprise Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Email: RSS Free Trial Offer</fullName>
+        <default>false</default>
+        <label>Email: RSS Free Trial Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Email: Lock Screen</fullName>
+        <default>false</default>
+        <label>Email: Lock Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>Eureka 2 Months Free Trial 2023</fullName>
+        <default>false</default>
+        <label>Eureka 2 Months Free Trial 2023</label>
+    </customValue>
+    <customValue>
+        <fullName>Web Suite: CR Gamification Enterprise Discount Offer</fullName>
+        <default>false</default>
+        <label>Web Suite: CR Gamification Enterprise Discount Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Architect: Cross-sell Offer for Messaging Partners</fullName>
+        <default>false</default>
+        <label>Architect: Cross-sell Offer for Messaging Partners</label>
+    </customValue>
+    <customValue>
+        <fullName>Architect: Upsell Offer for Non-Architect Partners</fullName>
+        <default>false</default>
+        <label>Architect: Upsell Offer for Non-Architect Partners</label>
+    </customValue>
+    <customValue>
+        <fullName>SMS: Enterprise Offer for Standard Edition Partners</fullName>
+        <default>false</default>
+        <label>SMS: Enterprise Offer for Standard Edition Partners</label>
+    </customValue>
+    <customValue>
+        <fullName>WhatsApp: Enterprise Offer for Standard Edition Partners</fullName>
+        <default>false</default>
+        <label>WhatsApp: Enterprise Offer for Standard Edition Partners</label>
+    </customValue>
+    <customValue>
+        <fullName>UK Cognism Trial</fullName>
+        <default>false</default>
+        <label>UK Cognism Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Email: CR Gamification Enterprise Discount Offer</fullName>
+        <default>false</default>
+        <label>Email: CR Gamification Enterprise Discount Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Web Push: CR Gamification Enterprise Discount Offer</fullName>
+        <default>false</default>
+        <label>Web Push: CR Gamification Enterprise Discount Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>MindBehind: Discount Offer for WhatsApp Partners</fullName>
+        <default>false</default>
+        <label>MindBehind: Discount Offer for WhatsApp Partners</label>
+    </customValue>
+    <customValue>
+        <fullName>Architect: Usage Gamification Enterprise Discount Offer</fullName>
+        <default>false</default>
+        <label>Architect: Usage Gamification Enterprise Discount Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Messaging Warfare 2024</fullName>
+        <default>false</default>
+        <label>Messaging Warfare 2024</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Optimize Attack</fullName>
+        <default>false</default>
+        <label>Google Optimize Attack</label>
+    </customValue>
+    <customValue>
+        <fullName>CSQL Campaign</fullName>
+        <default>false</default>
+        <label>CSQL Campaign</label>
+    </customValue>
+    <customValue>
+        <fullName>Mindbehind Offer</fullName>
+        <default>false</default>
+        <label>Mindbehind Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season Campaign 2024</fullName>
+        <default>false</default>
+        <label>Peak Season Campaign 2024</label>
+    </customValue>
+    <customValue>
+        <fullName>Warfare SMS Unlock: Transactional - OTP 2024</fullName>
+        <default>false</default>
+        <label>Warfare SMS Unlock: Transactional - OTP 2024</label>
+    </customValue>
+    <customValue>
+        <fullName>Warfare WhatsApp Unlock: Utility - Auth OTP 2024</fullName>
+        <default>false</default>
+        <label>Warfare WhatsApp Unlock: Utility - Auth OTP 2024</label>
+    </customValue>
+    <customValue>
+        <fullName>Warfare Transactional Messaging: SMS-WhatsApp OTP 2024</fullName>
+        <default>false</default>
+        <label>Warfare Transactional Messaging: SMS-WhatsApp OTP 2024</label>
+    </customValue>
+    <customValue>
+        <fullName>Group Level Access Unlock Request</fullName>
+        <default>false</default>
+        <label>Group Level Access Unlock Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Year Renewal PSL Incentive</fullName>
+        <default>false</default>
+        <label>Multi-Year Renewal PSL Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Group Level Access - One Time Promotional Offer</fullName>
+        <default>false</default>
+        <label>Group Level Access - One Time Promotional Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>Peak Season 2024 Limit Increase Offer</fullName>
+        <default>false</default>
+        <label>Peak Season 2024 Limit Increase Offer</label>
+    </customValue>
+    <customValue>
+        <fullName>META HiPo One-time-offer</fullName>
+        <default>false</default>
+        <label>META HiPo One-time-offer</label>
+    </customValue>
+    <masterLabel>Sales Campaign Name</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

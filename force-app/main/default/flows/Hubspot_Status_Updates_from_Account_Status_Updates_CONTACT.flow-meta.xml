@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <name>Account_Status_Active_Client</name>
+        <label>Account Status --&gt; Active Client</label>
+        <locationX>644</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Active Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact</targetReference>
+            </connector>
+            <label>Active Customer</label>
+        </rules>
+        <rules>
+            <name>Churn_Customer2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Churn Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetContact</targetReference>
+            </connector>
+            <label>Churn Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_is_not_Null</name>
+        <label>Contact is not Null</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_All_Contacts</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_is_not_Null2</name>
+        <label>Contact is not Null2</label>
+        <locationX>710</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_All_Contacts2</targetReference>
+            </connector>
+            <label>Yes1</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Hubspot Status Updates from Account Status Updates CONTACT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Hubspot Status Updates from Account Status Updates CONTACT</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_is_not_Null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>Contact</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CustomLifecycleStage__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <name>GetContact</name>
+        <label>GetContact</label>
+        <locationX>710</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_is_not_Null2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>Contact</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CustomLifecycleStage__c</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_All_Contacts</name>
+        <label>Update All Contacts</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>CustomLifecycleStage__c</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contacts</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_All_Contacts2</name>
+        <label>Update All Contacts</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>CustomLifecycleStage__c</field>
+            <value>
+                <stringValue>Churned Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contacts</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>518</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Account_Status_Active_Client</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND (1 OR 3)</filterLogic>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Churn Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active Customer</stringValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Contact</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

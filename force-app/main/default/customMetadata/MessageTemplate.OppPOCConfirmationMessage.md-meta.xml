@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>OppPOCConfirmationMessage</label>
+    <protected>false</protected>
+    <values>
+        <field>Template__c</field>
+        <value xsi:type="xsd:string">Hi {!Record.OwnerName__c},
+Your POC request has been approved by {!Record.SalesOpsOwnerName__c}.
+For further communication, you can use this thread.
+We appreciate all of your efforts!
+Opportunity Id: {!Record.Id}
+Opportunity Name: {!Record.Name}
+Link: https://insider3.lightning.force.com/{!Record.Id}</value>
+    </values>
+</CustomMetadata>

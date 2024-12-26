@@ -1,0 +1,76 @@
+<template>
+
+    <div class="container full-width">
+
+        <!-- PAGE HEADER -->
+        <div class="header full-width slds-border_bottom slds-text-heading_medium slds-theme_shade slds-p-horizontal_medium slds-p-vertical_large">
+            <div class="slds-align_absolute-center">
+                <h1> <b>ADD PRODUCT</b> </h1>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="slds-text-body_small slds-m-top_xx-small"> {recordname} </p>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="slds-text-body_small slds-m-top_xx-small"> {pricebook.label} </p>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT -->
+        <div class="body full-width medium-content slds-scrollable_y">
+
+            <div class="slds-p-horizontal_medium slds-p-vertical_large">
+
+                <div class="slds-form-element">
+
+                    <div class="slds-form-element__control">
+
+                        <div class="slds-combobox_container">
+
+                            <div class="searchResultBox slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click">
+                                
+                                <lightning-input
+                                    variant="label-hidden"
+                                    placeholder="Search in products"
+                                    value={searchKey}
+                                    onchange={onchangeSearchField}>
+                                </lightning-input>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="slds-form-element__control slds-m-top_medium">
+                    
+                    <div style="height: 350px;">
+
+                        <lightning-datatable
+                            key-field="id"
+                            data={productListFound}
+                            columns={columns}
+                            selected-rows={selectedRowIds}
+                            onrowselection={onselectRow}>
+                        </lightning-datatable>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PAGE FOOTER -->
+        <div class="footer full-width slds-border_top">
+            <div class="slds-button-group slds-p-around_small slds-text-body_small">
+                <lightning-button onclick={onclickCancel} variant="neutral" label="Cancel"></lightning-button>
+                <lightning-button onclick={onclickNext} variant="brand" label="Next" class="slds-m-left_small">
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+
+</template>

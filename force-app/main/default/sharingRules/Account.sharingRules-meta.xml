@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>VP_of_AU</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>Read</opportunityAccessLevel>
+        </accountSettings>
+        <label>VP of AU</label>
+        <sharedTo>
+            <role>Team_AU</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>RegionalVPAUSGMY</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

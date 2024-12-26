@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Internal Email Flow for PLG Opportunities</description>
+        <name>New_PLG_Opportunity_Alert_Email</name>
+        <label>New PLG Opportunity Alert Email</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Owner.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>plg@useinsider.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>PLGInternalEmailTemplateSubject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>NewPLGOpportunityAlertEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Any_Contact_Found</name>
+        <label>Any Contact Found?</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opp_Related_Contacts.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>New_PLG_Opportunity_Alert_Email</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>PLG Opportunity Internal Email Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PLG Opportunity Internal Email Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Opp_Related_Contacts</name>
+        <label>Get Opp Related Contacts</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Any_Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityContactRole</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opp_Related_Contacts</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17 OR 18 OR 19 OR 20)</filterLogic>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Eureka 2 Months Free Trial 2023</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email: Lock Screen</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email: Growth to Enterprise Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Architect Lock Screen</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>User Analytics Free Trial Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web Suite: CR Gamification Enterprise Discount Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Architect: Cross-sell Offer for Messaging Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SMS: Enterprise Offer for Standard Edition Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>WhatsApp: Enterprise Offer for Standard Edition Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email: CR Gamification Enterprise Discount Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web Push: CR Gamification Enterprise Discount Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MindBehind: Discount Offer for WhatsApp Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Architect: Usage Gamification Enterprise Discount Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web Push Growth to Enterprise Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email: RSS Free Trial Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Architect: Upsell Offer for Non-Architect Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SMS: Enterprise Offer for Standard Edition Partners</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Mindbehind Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Group Level Access - One Time Promotional Offer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Sales_Campaign__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Peak Season 2024 Limit Increase Offer</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Internal Email for PLG Opportunity Creation</description>
+        <name>NewPLGOpportunityAlertEmail</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hello {!$Record.Owner.FirstName},&lt;/p&gt;&lt;p&gt;We are thrilled to inform you about the new opportunity that has been created as part of our ongoing Sales Campaign, &lt;strong&gt;{!$Record.Sales_Campaign__c}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Opportunity Details&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Customer: &lt;/strong&gt;{!$Record.Account.Name}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Opportunity Name:&lt;/strong&gt; {!$Record.Name}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contact Roles section inside of the opportunity;{!Get_Opp_Related_Contacts.Contact.Name}&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Request Owner&lt;/strong&gt;: {!Get_Opp_Related_Contacts.Contact.FirstName} {!Get_Opp_Related_Contacts.Contact.LastName}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Request Owner&apos;s Email:&lt;/strong&gt; {!Get_Opp_Related_Contacts.Contact.Email}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Campaign Name:&lt;/strong&gt; {!$Record.Sales_Campaign__c}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Campaign Content Link:&lt;/strong&gt; &lt;a href=&quot;https://insider-portal.atlassian.net/wiki/spaces/PSO/pages/3921182811/PLG+Library&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;PLG Library &lt;/a&gt;&lt;/p&gt;&lt;p&gt;In this opportunity, you&apos;ll find information about the customer, the request owner, the campaign you are a part of, and a direct link to the PLG Library Confluence page for additional resources.&lt;/p&gt;&lt;p&gt;As the opportunity owner, your role is vital in ensuring the success of this opportunity. Please review the information and resources available, and be prepared to take the necessary steps to move this opportunity forward.&amp;nbsp;&lt;/p&gt;&lt;p&gt;Your initial contact with the Request Owner is crucial. As per our SLA, we expect you to reach out to the Request Owner within &lt;strong style=&quot;color: rgb(244, 5, 5);&quot;&gt;&lt;u&gt;[SLA Timeframe, 48 hours]&lt;/u&gt;&lt;/strong&gt; from the moment this opportunity is created.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;If this request is for a Free Trial, &lt;/strong&gt;your opportunity will start at the POC stage&lt;strong&gt;,&lt;/strong&gt; and product activation will be handled by your regional revenue operations owner. Products will be active for 30 days.&lt;strong&gt; You can send a check-in call to the customer to be sure that they are using the product without any problem.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;If this request is not for a Free Trial&lt;/strong&gt;, we expect you to&lt;strong&gt; engage with the customer using predefined commercial incentives for that specific campaign&lt;/strong&gt;. Please refer to the provided guidelines for more information on the approach to take.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Critical points:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Read PLG Library carefully &lt;strong&gt;to understand the details of the campaign and reach out to the customer by utilizing the content.&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;This is a &lt;strong&gt;Product-Qualified Lead &lt;/strong&gt;meaning that the need &amp;amp; demand are already there, so treat this separately from the opportunities you might already have with the partner, don’t always try to include it in them, and if you do so make sure to transition this one accordingly&lt;/li&gt;&lt;li&gt;Moving fast for these opportunities is very crucial, please reach out as soon as possible and &lt;strong&gt;update your opportunity details (stage, close date, etc.)&lt;/strong&gt; accordingly.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Here is the &lt;a href=&quot;https://docs.google.com/presentation/d/1iGITUqmbxY-LC7PqpjeteAPP_WXjI_WySiMD7cPO4yY/edit#slide=id.g22389a5ddf9_0_3&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;PLG - Sales Guideline link&lt;/a&gt; for detailed information.&lt;/p&gt;&lt;p&gt;If you have any questions you can reach out to Uluç Akyüz, Ezgi Özkan, Berre Şener.&lt;/p&gt;&lt;p&gt;Kind Regards&lt;/p&gt;&lt;p&gt;Insider PLG&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PLGInternalEmailTemplateSubject</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>[ACTION REQUIRED] {!$Record.Sales_Campaign__c} Inone Request</text>
+    </textTemplates>
+</Flow>

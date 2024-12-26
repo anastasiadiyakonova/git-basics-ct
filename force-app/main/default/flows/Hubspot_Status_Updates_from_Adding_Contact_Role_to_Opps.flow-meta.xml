@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <description>Flow is triggered when an opportunity contact role record is created.</description>
+    <environments>Default</environments>
+    <interviewLabel>Hubspot Status Updates from Adding Contact Role to Opps {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Hubspot Status Updates from Adding Contact Role to Opps</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Converted_Lead</name>
+        <label>Update Converted Lead</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ConvertedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CustomLifecycleStage__c</field>
+            <value>
+                <stringValue>Sales Qualified Lead</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Converted_Lead</targetReference>
+        </connector>
+        <object>OpportunityContactRole</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

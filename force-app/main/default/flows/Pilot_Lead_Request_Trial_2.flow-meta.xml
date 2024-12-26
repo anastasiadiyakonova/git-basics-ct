@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>test</description>
+        <name>lead_flow_test</name>
+        <label>lead flow test</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>demo-leads-sla-pilot-channel2</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Pilot Lead Request Trial 2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pilot Lead Request Trial 2</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Marketing_Contact_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Marketing Contact</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CustomLeadScore__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>60.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsConverted</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Demo_Lead_Conversion_SLA_2</name>
+            <connector>
+                <targetReference>lead_flow_test</targetReference>
+            </connector>
+            <label>Demo Lead Conversion SLA-2</label>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>denemeleadflow</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>Hello Team,
+
+A demo request from &quot;{!$Record.Territory__c}&quot; by &quot;{!$Record.FirstName}&quot; &quot;{!$Record.LastName}&quot; has exceeded its SLA. 
+
+Request Date: {!$CreateDate__c)
+
+Please specify the reason for the delay &amp; ask for help if needed.</text>
+    </textTemplates>
+</Flow>

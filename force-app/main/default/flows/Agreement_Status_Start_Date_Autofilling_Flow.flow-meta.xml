@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <name>Commercial_Review_In_Progress_Date</name>
+        <label>Commercial Review In Progress Date</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CommercialReviewInProgressStartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Countersignedaa</name>
+        <label>Countersigned</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CounterSignedStartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Pending_Sales_Actionzz</name>
+        <label>Pending Sales Action</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PendingSalesActionsStartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Request_Commercial_Review_Update</name>
+        <label>Request Commercial Review Update</label>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CommercialReviewRequestDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Request_Legal_In_Progresszz</name>
+        <label>Request Legal In Progress</label>
+        <locationX>1634</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.RequestLegalInprogressStartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Request_Legal_Review_Date_Update</name>
+        <label>Request Legal Review Date Update</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.LegalReviewRequestDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Single_Party_Signedzz</name>
+        <label>Single Party Signed</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SinglePartySignedStartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>AgreementStageDecision</name>
+        <label>Agreement Stage Decision</label>
+        <locationX>974</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Commercial_Review_In_Progress</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Commercial Review in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Commercial_Review_In_Progress_Date</targetReference>
+            </connector>
+            <label>Commercial Review In Progress</label>
+        </rules>
+        <rules>
+            <name>RequestLegalReview</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Request Legal Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Request_Legal_Review_Date_Update</targetReference>
+            </connector>
+            <label>RequestLegalReview</label>
+        </rules>
+        <rules>
+            <name>Pending_Sales_Action</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending Sales Action</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pending_Sales_Actionzz</targetReference>
+            </connector>
+            <label>Pending Sales Action</label>
+        </rules>
+        <rules>
+            <name>Single_Party_Signed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Single Party Signed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Single_Party_Signedzz</targetReference>
+            </connector>
+            <label>Single Party Signed</label>
+        </rules>
+        <rules>
+            <name>CounterSigned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Countersigned</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Countersignedaa</targetReference>
+            </connector>
+            <label>CounterSigned</label>
+        </rules>
+        <rules>
+            <name>Request_Commercial_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Request Commercial Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Request_Commercial_Review_Update</targetReference>
+            </connector>
+            <label>Request Commercial Review</label>
+        </rules>
+        <rules>
+            <name>Request_Legal_In_progress</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Request Legal In Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Request_Legal_In_Progresszz</targetReference>
+            </connector>
+            <label>Request Legal In progress</label>
+        </rules>
+    </decisions>
+    <description>All agreement start date informations would be fulfilled automatically ,when a status updated</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CommercialReviewStartDateUpdateSet</name>
+        <dataType>Date</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>GETNOW</name>
+        <dataType>Date</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>PendingStartDateUpdate</name>
+        <dataType>Date</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <formulas>
+        <name>RequestLegalReviewUpdate</name>
+        <dataType>Date</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Agreement Status Start Date Autofilling Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Agreement Status Start Date Autofilling Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>848</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>AgreementStageDecision</targetReference>
+        </connector>
+        <filterFormula>(ISNEW() &amp;&amp; TEXT({!$Record.Stage__c}) != &apos;Done&apos; &amp;&amp;  TEXT({!$Record.Stage__c}) != &apos;Trash&apos;)
+ || 
+(ISCHANGED({!$Record.Stage__c}) &amp;&amp; TEXT({!$Record.Stage__c}) != &apos;Done&apos; &amp;&amp; TEXT({!$Record.Stage__c}) != &apos;Trash&apos;)</filterFormula>
+        <object>Agreement__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

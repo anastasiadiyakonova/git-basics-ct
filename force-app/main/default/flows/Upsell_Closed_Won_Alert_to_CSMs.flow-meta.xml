@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>turkey_closed_won_alert</name>
+        <label>turkey closed won alert</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>UpsellClosedWonTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a088d00000Ds6XhAAJ</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Territory_Decision</name>
+        <label>Territory Decision</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Turkey</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.Territory__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Turkey</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>turkey_closed_won_alert</targetReference>
+            </connector>
+            <label>Turkey</label>
+        </rules>
+    </decisions>
+    <description>Upsell and MRR Raise Closed Won alert to CSM</description>
+    <environments>Default</environments>
+    <interviewLabel>Upsell Closed Won Alert to CSMs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Upsell Closed Won Alert to CSMs</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Territory_Decision</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>(1 AND 2 AND 4) OR (1 AND 3 AND 4)</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0128d000000tLEiAAM</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Upsell</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MRR Raise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>UpsellClosedWonTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello {!$Record.InOne__r.Customer_Success_Manager__c}
+Another day, another great news to celebrate! :Alert:
+We want to let you know and congratulate all team. 
+{!$Record.Owner.FirstName} has closed the {!$Record.Name} deal with {!$Record.Amount} MRR :moneybag: :cherries:
+Thank you again for your teamwork, dedication, and hard work!
+We appreciate all of your efforts!</text>
+    </textTemplates>
+</Flow>

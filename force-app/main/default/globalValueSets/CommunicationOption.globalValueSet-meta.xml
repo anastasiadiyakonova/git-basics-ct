@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>No Meeting</fullName>
+        <default>true</default>
+        <label>No Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Call / per 2 Months</fullName>
+        <default>false</default>
+        <label>1 Call / per 2 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Call / per Month</fullName>
+        <default>false</default>
+        <label>1 Call / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Calls / per Month</fullName>
+        <default>false</default>
+        <label>2 Calls / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Calls / per Month</fullName>
+        <default>false</default>
+        <label>3 Calls / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>4 Calls / per Month</fullName>
+        <default>false</default>
+        <label>4 Calls / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>7 Calls / Per Month</fullName>
+        <default>false</default>
+        <label>7 Calls / Per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Meeting / per Year</fullName>
+        <default>false</default>
+        <label>1 Meeting / per Year</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Meetings / per Year</fullName>
+        <default>false</default>
+        <label>2 Meetings / per Year</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Meetings / per Year</fullName>
+        <default>false</default>
+        <label>3 Meetings / per Year</label>
+    </customValue>
+    <customValue>
+        <fullName>4 Meetings / per Year</fullName>
+        <default>false</default>
+        <label>4 Meetings / per Year</label>
+    </customValue>
+    <customValue>
+        <fullName>5 Meetings / per Year</fullName>
+        <default>false</default>
+        <label>5 Meetings / per Year</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Meetings / per Year</fullName>
+        <default>false</default>
+        <label>6 Meetings / per Year</label>
+    </customValue>
+    <masterLabel>Communication Option</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

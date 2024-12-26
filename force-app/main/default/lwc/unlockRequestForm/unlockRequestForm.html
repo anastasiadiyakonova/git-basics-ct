@@ -1,0 +1,14 @@
+<template>    
+                <header class="slds-modal__header">
+                   <h2 class="slds-text-heading_medium">Unlock Request</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template if:true={isLoading}>
+                        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                    </template>
+                    <lightning-textarea required label="Description" value={description} onchange={handleDescriptionChange}></lightning-textarea>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand" label="Submit Request" onclick={handleSubmit}></lightning-button>
+                </footer>      
+</template>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Copy_1_of_SS_slack</name>
+        <label>Copy 1 of SS slack</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>POC</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a088d0000093zLCAAY</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Copy_20_of_CEE_opp_send_message</name>
+        <label>SS slack</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>ClosedLost</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a088d0000093zLCAAY</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>SS_Slack_Msg</name>
+        <label>SS Slack Msg</label>
+        <locationX>314</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closed_Lost_Amount_is_higher_than_7K</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Amount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>7000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_20_of_CEE_opp_send_message</targetReference>
+            </connector>
+            <label>Closed Lost Amount is higher than 7K</label>
+        </rules>
+        <rules>
+            <name>POC_Amount_is_higher_than</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>POC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Amount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>7000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_SS_slack</targetReference>
+            </connector>
+            <label>POC Amount is higher than 7K</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>The amount is higher than 7K Slack Msg {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>The amount is higher than 7K Slack Msg</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SS_Slack_Msg</targetReference>
+        </connector>
+        <filterLogic>(1 AND (2 OR 3 OR 4)) AND 7 AND (5 OR 6)</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0128d000000tLEiAAM</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New Acquisition</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Upsell</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MRR Raise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>POC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>ClosedLost</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Closed Lost Opportunity Information
+Opportunity Owner:  {!$Record.Owner.Name} 
+Opportunity Name:  {!$Record.Name} deal with {!$Record.Amount} 
+Closed Lost Date: {!$Record.Closed_Lost_Date__c} 
+Closed Lost Details: {!$Record.ClosedLostReasonDetails__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ClosedWon</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Another day, another great news to celebrate! :Alert:
+Thank you dear Team and  @{!$Record.Owner.Name} to close the {!$Record.Name} deal with {!$Record.Amount} MRR :moneybag:
+Thank you for your teamwork, dedication, and hard work!
+We appreciate all of your efforts!</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Opptexttemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello {!$Record.Owner.Name}
+The Closed Won Request for the {!$Record.Name} has been received.
+{!$Record.Sales_Ops_Owner__c} will review and move to Closed Won as soon as possible
+
+Opportunity Name: {!$Record.Name}
+Amount: {!$Record.Amount}
+Acquisition Type: {!$Record.Acquisition_Type__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>POC</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>POC Opportunity Information
+Opportunity Owner:  {!$Record.Owner.Name} 
+Opportunity Name:  {!$Record.Name} deal with {!$Record.Amount} 
+{!$Record.ForPOCStartAndEndDate__c} 
+{!$Record.POCSuccessCriteriaObjectivesKPIs__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>testext</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>hello
+new opportunity has been created</text>
+    </textTemplates>
+</Flow>

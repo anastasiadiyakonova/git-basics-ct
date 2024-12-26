@@ -1,0 +1,20 @@
+.bold {
+    font-weight: 800;
+}
+
+.word-wrap {
+    /*overflow-wrap: break-word;
+    overflow: hidden;
+    inline-size: 150px;*/
+    white-space: normal;
+    word-wrap: break-word;
+    width: 150px;
+}
+
+.empty-div {
+    height: 20px;
+}
+
+.width-small {
+    width: 50px;
+}

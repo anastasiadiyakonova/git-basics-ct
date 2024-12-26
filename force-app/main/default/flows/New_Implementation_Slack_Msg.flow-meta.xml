@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>NewImplementation2</name>
+        <label>NewImplementation</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>NewImplementation</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a08Pz000007QsSAIA0</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>New Implementation Slack Msg {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>New Implementation Slack Msg</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>NewImplementation2</targetReference>
+        </connector>
+        <object>Implementations__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>NewImplementation</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.Owner:User.FirstName}
+New implementation has been created for {!$Record.Customer__r.Name}
+For further communication, you can use this thread.
+We appreciate all of your efforts!
+Link: https://insider3.lightning.force.com/lightning/r/Implementations__c/{!$Record.Id}/view</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OnboardingAssignment</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.Owner:User.FirstName}
+{!$Record.Customer_Onboarding_Manager__r.FirstName} has been assigned to {!$Record.Customer__r.Name}. 
+The implementation link is: https://insider3.lightning.force.com/lightning/r/Implementations__c/{!$Record.Id}/view
+For further communication, you can use this thread.
+We appreciate all of your efforts!</text>
+    </textTemplates>
+</Flow>

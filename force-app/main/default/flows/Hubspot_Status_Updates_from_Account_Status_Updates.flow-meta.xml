@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <name>Account_Status_Active_Client</name>
+        <label>Account Status --&gt; Active Client</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Account_Status_Churn_Client</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Active Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Custom_Lifecycle_to_Customer</targetReference>
+            </connector>
+            <label>Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Account_Status_Churn_Client</name>
+        <label>Account Status --&gt; Churn Client</label>
+        <locationX>182</locationX>
+        <locationY>671</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Churn_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Churn Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Custom_Lifecycle_to_Churn_Customer</targetReference>
+            </connector>
+            <label>Churn Customer</label>
+        </rules>
+    </decisions>
+    <description>Flow is triggered when an account record is updated.</description>
+    <environments>Default</environments>
+    <interviewLabel>Hubspot Status Updates from Account Status Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Hubspot Status Updates from Account Status Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Custom_Lifecycle_to_Churn_Customer</name>
+        <label>Update Custom Lifecycle to Churn Customer</label>
+        <locationX>50</locationX>
+        <locationY>791</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ConvertedAccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CustomLifecycleStage__c</field>
+            <value>
+                <stringValue>Churn Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Custom_Lifecycle_to_Customer</name>
+        <label>Update Custom Lifecycle to Customer</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Account_Status_Churn_Client</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ConvertedAccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CustomLifecycleStage__c</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Account_Status_Active_Client</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

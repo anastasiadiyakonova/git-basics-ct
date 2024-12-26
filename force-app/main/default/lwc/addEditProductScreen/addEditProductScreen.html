@@ -1,0 +1,52 @@
+<template>
+    
+    <div if:true={record}>
+        <!--
+            Spinner for whole page
+        -->
+        <div if:true={showSpinner}>
+            <lightning-spinner
+                size="large"
+                variant="brand">
+            </lightning-spinner>
+        </div>
+
+        <!--
+            Choose Pricebook Component 
+        -->
+        <c-pricebook-selection-screen
+            if:true={showPricebookPage}
+            onclosescreen={closeAction}
+            onproductpage={setPricebook}>
+        </c-pricebook-selection-screen>
+
+        <!--
+            Choose Product Component
+        -->
+        <c-product-selection-screen
+            if:true={showProductPage}
+            onclosescreen={closeAction}
+            onpricingpage={setProductPrice}
+            recordname={record.Name}
+            pricebook={selectedPb}
+            onspinnerevent={setSpinnerAction}
+            recordid={recordId}
+            backactiondata={backActionData}>
+        </c-product-selection-screen>
+
+        <!--
+            Component that set the price, quantity and other values
+        -->
+        <c-product-pricing-screen
+            if:true={showSetPricePage}
+            onclosescreen={closeAction}
+            productlist={productList}
+            onspinnerevent={setSpinnerAction}
+            onpreviousevent={backToPrevious}
+            pricebooklabel={selectedPb.label}
+            recordid={recordId}
+            record={record}>
+        </c-product-pricing-screen>
+    </div>
+
+</template>

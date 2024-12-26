@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Update Total Price for Flex and Subs Fee Products {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Total Price for Flex and Subs Fee Products</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Total_Price</name>
+        <label>Update Total Price</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>TotalPrice</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Total_Price</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>FeeTypeFormula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Flex Fee</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>FeeTypeFormula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Annual Short Code Fee</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>TotalPrice</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

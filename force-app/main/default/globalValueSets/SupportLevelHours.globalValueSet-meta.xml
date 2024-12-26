@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>No Support</fullName>
+        <default>true</default>
+        <label>No Support</label>
+    </customValue>
+    <customValue>
+        <fullName>0.5 Hour / per Month</fullName>
+        <default>false</default>
+        <label>0.5 Hour / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Hour / per Month</fullName>
+        <default>false</default>
+        <label>1 Hour / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Hours / per Month</fullName>
+        <default>false</default>
+        <label>2 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Hours / per Month</fullName>
+        <default>false</default>
+        <label>3 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>4 Hours / per Month</fullName>
+        <default>false</default>
+        <label>4 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>5 Hours / per Month</fullName>
+        <default>false</default>
+        <label>5 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Hours / per Month</fullName>
+        <default>false</default>
+        <label>6 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>7 Hours / per Month</fullName>
+        <default>false</default>
+        <label>7 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>8 Hours / per Month</fullName>
+        <default>false</default>
+        <label>8 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>9 Hours / per Month</fullName>
+        <default>false</default>
+        <label>9 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>10 Hours / per Month</fullName>
+        <default>false</default>
+        <label>10 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>11 Hours / per Month</fullName>
+        <default>false</default>
+        <label>11 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Hours / per Month</fullName>
+        <default>false</default>
+        <label>12 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>13 Hours / per Month</fullName>
+        <default>false</default>
+        <label>13 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>14 Hours / per Month</fullName>
+        <default>false</default>
+        <label>14 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>15 Hours / per Month</fullName>
+        <default>false</default>
+        <label>15 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>16 Hours / per Month</fullName>
+        <default>false</default>
+        <label>16 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>17 Hours / per Month</fullName>
+        <default>false</default>
+        <label>17 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>18 Hours / per Month</fullName>
+        <default>false</default>
+        <label>18 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>19 Hours / per Month</fullName>
+        <default>false</default>
+        <label>19 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>20 Hours / per Month</fullName>
+        <default>false</default>
+        <label>20 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>21 Hours / per Month</fullName>
+        <default>false</default>
+        <label>21 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>22 Hours / per Month</fullName>
+        <default>false</default>
+        <label>22 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>23 Hours / per Month</fullName>
+        <default>false</default>
+        <label>23 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>24 Hours / per Month</fullName>
+        <default>false</default>
+        <label>24 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>0 Hour</fullName>
+        <default>false</default>
+        <label>0 Hour</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Hours</fullName>
+        <default>false</default>
+        <label>3 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Hours</fullName>
+        <default>false</default>
+        <label>6 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Hours</fullName>
+        <default>false</default>
+        <label>12 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>18 Hours</fullName>
+        <default>false</default>
+        <label>18 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>24 Hours</fullName>
+        <default>false</default>
+        <label>24 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>30 Hours</fullName>
+        <default>false</default>
+        <label>30 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>36 Hours</fullName>
+        <default>false</default>
+        <label>36 Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>25 Hours / per Month</fullName>
+        <default>false</default>
+        <label>25 Hours / per Month</label>
+    </customValue>
+    <customValue>
+        <fullName>26 Hours / per Month</fullName>
+        <default>false</default>
+        <label>26 Hours / per Month</label>
+    </customValue>
+    <masterLabel>Support Level Hours</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

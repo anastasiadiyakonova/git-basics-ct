@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Daniel_Lee_JP</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Daniel Lee JP</label>
+        <sharedTo>
+            <group>Daniel_Lee</group>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Team_JP</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Sebastian_Duque_FR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Sebastian Duque FR</label>
+        <sharedTo>
+            <role>TeamFR</role>
+        </sharedTo>
+        <sharedFrom>
+            <group>Sebastian_Duque</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Suad_zg_n_US</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Suad Özgün US</label>
+        <sharedTo>
+            <group>Suad_Ozgun</group>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamUS</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_AU</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team AU</label>
+        <sharedTo>
+            <role>Team_AU</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Team_AU</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_BR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team BR</label>
+        <sharedTo>
+            <role>TeamBR</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamBR</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_ES</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team ES</label>
+        <sharedTo>
+            <role>Team_ES</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Team_ES</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_FR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team FR</label>
+        <sharedTo>
+            <role>TeamFR</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamFR</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_ID</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team ID</label>
+        <sharedTo>
+            <role>Team_ID</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Team_ID</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_JP</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team JP</label>
+        <sharedTo>
+            <role>Team_JP</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Team_JP</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_KR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team KR</label>
+        <sharedTo>
+            <role>TeamKR</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamKR</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_MENA</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team MENA</label>
+        <sharedTo>
+            <role>TeamMENA</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamMENA</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_NL</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team NL</label>
+        <sharedTo>
+            <role>TeamNL</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamNL</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_RU</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team RU</label>
+        <sharedTo>
+            <role>TeamRU</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamRU</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_SGMYHK</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team SGMYHK</label>
+        <sharedTo>
+            <role>TeamSGMY</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamSGMY</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_TH</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team TH</label>
+        <sharedTo>
+            <role>TeamTH</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamTH</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_TR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team TR</label>
+        <sharedTo>
+            <role>TeamTR</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamTR</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_TW</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team TW</label>
+        <sharedTo>
+            <role>TeamTWHK</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamTWHK</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_UK</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team UK</label>
+        <sharedTo>
+            <role>Team_UK</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Team_UK</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_US</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team US</label>
+        <sharedTo>
+            <role>TeamUS</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamUS</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Team_VN</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Team VN</label>
+        <sharedTo>
+            <role>TeamVN</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>TeamVN</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

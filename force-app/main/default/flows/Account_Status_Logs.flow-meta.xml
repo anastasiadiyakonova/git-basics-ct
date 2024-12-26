@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <name>Which_Status</name>
+        <label>Which Status</label>
+        <locationX>578</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Potential_Client</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Potential Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Log_Potential_Client_Date</targetReference>
+            </connector>
+            <label>Potential Client</label>
+        </rules>
+        <rules>
+            <name>Churn_Client</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Churn Client</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Log_Churn_Client_Date</targetReference>
+            </connector>
+            <label>Churn Client</label>
+        </rules>
+        <rules>
+            <name>Active_Client</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Active Client</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Log_Potential_Active_Date</targetReference>
+            </connector>
+            <label>Active Client</label>
+        </rules>
+        <rules>
+            <name>Lost_Client</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost Client</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Log_Lost_Client_Date</targetReference>
+            </connector>
+            <label>Lost Client</label>
+        </rules>
+    </decisions>
+    <description>Flow is triggered when an account status field is changed.</description>
+    <environments>Default</environments>
+    <interviewLabel>Account Status Logs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Status Logs</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Log_Churn_Client_Date</name>
+        <label>Log Churn Client Date</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ChurnClientDate__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Log_Lost_Client_Date</name>
+        <label>Log Lost Client Date</label>
+        <locationX>842</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>LostClientDate__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Log_Potential_Active_Date</name>
+        <label>Log Potential Active Date</label>
+        <locationX>578</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>ActiveClientDate__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Log_Potential_Client_Date</name>
+        <label>Log Potential Client Date</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>PotentialClientDate__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Which_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountStatus__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

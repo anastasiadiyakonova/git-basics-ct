@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>dashboardName</name>
+                    <value>VzoKAwdNbAtsgVzLmWXsxUnyDMIEoo</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>desktopDashboards_embeddedDashboard</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Country}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>United States</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>dashboardName</name>
+                    <value>tRNoBwVyUzBAjMpWMOxCUwSnBrplwy1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>desktopDashboards_embeddedDashboard2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Country}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>United States</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Getting Started Home</masterLabel>
+    <template>
+        <name>runtime_commerce_oci:homeTemplateOneRegion</name>
+    </template>
+    <type>HomePage</type>
+</FlexiPage>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Customer_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer Record Type</shortDescription>
+        <value>Standard</value>
+    </labels>
+    <labels>
+        <fullName>Dummy_Account_for_Portal_Contact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dummy Account for Portal Contact</shortDescription>
+        <value>New User Reg Dummy Account</value>
+    </labels>
+    <labels>
+        <fullName>MarketingLoginLabel</fullName>
+        <categories>Partner</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MarketingLoginLabel</shortDescription>
+        <value>https://insider3.my.site.com/</value>
+    </labels>
+    <labels>
+        <fullName>MarketingRegisterLabel</fullName>
+        <categories>Partner</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MarketingRegisterLabel</shortDescription>
+        <value>https://insider3.my.salesforce-sites.com/portal/CustomComSelfRegistration</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Guest_Site_User</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Guest Site User Label</shortDescription>
+        <value>Partner Site Guest User</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Profile_Label</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Profile Label</shortDescription>
+        <value>Custom Partner Community Profile</value>
+    </labels>
+    <labels>
+        <fullName>SM_Duplicate_Value_Found</fullName>
+        <categories>System Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SM Duplicate Value Found</shortDescription>
+        <value>There is already a record with the same name. Creating duplicate records is not allowed.</value>
+    </labels>
+    <labels>
+        <fullName>Support_Email_Address</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Support Email Address</shortDescription>
+        <value>rupal.sharma@360degreecloud.co.in</value>
+    </labels>
+    <labels>
+        <fullName>label_for_portal_customer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>label for portal customer</shortDescription>
+        <value>0013H00000vpllXQAQ</value>
+    </labels>
+</CustomLabels>

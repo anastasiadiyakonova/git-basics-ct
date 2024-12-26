@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Customer Related Issues</fullName>
+        <default>false</default>
+        <label>Customer Related Issues</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Process Related Issues</fullName>
+        <default>false</default>
+        <label>Sales Process Related Issues</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitor Related</fullName>
+        <default>false</default>
+        <label>Competitor Related</label>
+    </customValue>
+    <customValue>
+        <fullName>Product/Onboarding Related</fullName>
+        <default>false</default>
+        <label>Product/Onboarding Related</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <masterLabel>Main Category of Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

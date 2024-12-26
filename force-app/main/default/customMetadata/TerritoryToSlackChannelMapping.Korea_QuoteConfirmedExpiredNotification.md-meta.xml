@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Korea_QuoteConfirmedExpiredNotification</label>
+    <protected>false</protected>
+    <values>
+        <field>ActionName__c</field>
+        <value xsi:type="xsd:string">QuoteConfirmedExpired</value>
+    </values>
+    <values>
+        <field>MessageTemplate__c</field>
+        <value xsi:type="xsd:string">QuoteConfirmedExpiredMessage</value>
+    </values>
+    <values>
+        <field>SlackChannel__c</field>
+        <value xsi:type="xsd:string">sales_korea_contract_review</value>
+    </values>
+    <values>
+        <field>Territory__c</field>
+        <value xsi:type="xsd:string">Korea</value>
+    </values>
+</CustomMetadata>

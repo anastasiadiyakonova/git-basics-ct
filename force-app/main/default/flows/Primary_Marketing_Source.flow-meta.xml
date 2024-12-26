@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Marketing_Global_Msg</name>
+        <label>Marketing Global Msg</label>
+        <locationX>402</locationX>
+        <locationY>503</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>MarketingPrimarySourceSlackMsg</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a088d0000092Q9hAAE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Marketing</name>
+        <label>Marketing</label>
+        <locationX>534</locationX>
+        <locationY>383</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Marketing_Source</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OpportunityPrimarySource__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Marketing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Marketing_Global_Msg</targetReference>
+            </connector>
+            <label>Marketing Source</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Primary Marketing Source {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Primary Marketing Source</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>408</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Marketing</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0128d000000tLEiAAM</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Acquisition_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New Acquisition</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OpportunityPrimarySource__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Marketing</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>ClosedWon</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Another day, another great news to celebrate! :Alert:
+Thank you dear Team and  @{!$Record.Owner.Name} to close the {!$Record.Name} deal with {!$Record.Amount} MRR :moneybag:
+Thank you for your teamwork, dedication, and hard work!
+We appreciate all of your efforts!</text>
+    </textTemplates>
+    <textTemplates>
+        <name>MarketingPrimarySourceSlackMsg</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Congrats :tada: {!$Record.Territory__c} for bringing {!$Record.USDAmount__c} MRR:moneybag: Marketing Sourced Revenue Home with {!$Record.Name} deal.
+Thank you for your dedication, and hard work! :muscle::skin-tone-3:
+Here’s more information about this opportunity:
+{!$Record.Primary_Marketing_Campaign__c}
+{!$Record.Primary_Marketing_Campaign_Channel__c}
+{!$Record.Primary_Marketing_Campaign_Source__c}
+{!$Record.Main_Contact_marketing_touched__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Opptexttemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello {!$Record.Owner.Name}
+The Closed Won Request for the {!$Record.Name} has been received.
+{!$Record.Sales_Ops_Owner__c} will review and move to Closed Won as soon as possible
+
+Opportunity Name: {!$Record.Name}
+Amount: {!$Record.Amount}
+Acquisition Type: {!$Record.Acquisition_Type__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>testext</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>hello
+new opportunity has been created</text>
+    </textTemplates>
+</Flow>

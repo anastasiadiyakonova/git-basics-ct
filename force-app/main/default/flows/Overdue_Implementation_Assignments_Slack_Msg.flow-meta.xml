@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Americas</name>
+        <label>Americas</label>
+        <locationX>314</locationX>
+        <locationY>384</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>OverdueImplementation</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a08Pz000007RFZPIA4</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Apac</name>
+        <label>Apac</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>OverdueImplementation</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a08Pz000007R60WIAS</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>EMEA</name>
+        <label>EMEA</label>
+        <locationX>50</locationX>
+        <locationY>384</locationY>
+        <actionName>slackv2__invokePostMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <elementReference>OverdueImplementation</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>messageDestinationId</name>
+            <value>
+                <stringValue>a08Pz000007R4gJIAS</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackv2__invokePostMessage</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Onboarding_Directors</name>
+        <label>Onboarding Directors</label>
+        <locationX>446</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Firuza</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>0058d000004UevPAAS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>EMEA</targetReference>
+            </connector>
+            <label>Firuza</label>
+        </rules>
+        <rules>
+            <name>Bruno</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>0058d000004UeuwAAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Americas</targetReference>
+            </connector>
+            <label>Bruno</label>
+        </rules>
+        <rules>
+            <name>Angie</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>0058d000004UeufAAC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Apac</targetReference>
+            </connector>
+            <label>Angie</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Overdue Implementation Assignments Slack Msg {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Overdue Implementation Assignments Slack Msg</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>650</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Onboarding_Directors</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9) AND 10</filterLogic>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1. Resource Allocation</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2. Initiation</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>4. Configuration</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>5. UAT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>6. Training &amp; Enablement</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>7. Go-Live</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>8. Optimization</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>9. Scope Review &amp; Sign-off</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>10. Post-Onboarding Review</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>FormulaOnboardingCloseDate__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Implementations__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Scheduled_Path_1</name>
+            <label>Scheduled Path 1</label>
+            <offsetNumber>-1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Onboarding_Close_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>OnboardingAssignment</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.Owner:User.FirstName}
+{!$Record.Customer_Onboarding_Manager__r.FirstName} has been assigned to {!$Record.Customer__r.Name}. 
+The implementation link is: https://insider3.lightning.force.com/lightning/r/Implementations__c/{!$Record.Id}/view
+For further communication, you can use this thread.
+We appreciate all of your efforts!</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OverdueImplementation</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.Owner:User.FirstName}
+The implementation for {!$Record.Name} is overdue. Please review and provide necessary actions.
+The implementation link is: https://insider3.lightning.force.com/lightning/r/Implementations__c/{!$Record.Id}/view
+For further communication, you can use this thread.
+We appreciate all of your efforts!</text>
+    </textTemplates>
+</Flow>

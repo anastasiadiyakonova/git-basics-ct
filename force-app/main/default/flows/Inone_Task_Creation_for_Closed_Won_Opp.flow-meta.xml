@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Assign_User</name>
+        <label>Assign User</label>
+        <locationX>536</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>userId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TerritoryUser</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Director_Empty</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Director_Empty</name>
+        <label>Director Empty</label>
+        <locationX>536</locationX>
+        <locationY>623</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Empty</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_InOne.InOne__r.AccountManager__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Task</targetReference>
+            </connector>
+            <label>Empty</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>dueDate</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate}+7</expression>
+    </formulas>
+    <formulas>
+        <name>TerritoryUser</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.Territory__c}=&apos;MENA&apos;, &apos;0058d000004UeuVAAS&apos;,
+IF(OR({!$Record.Territory__c}=&apos;United Kingdom&apos;,{!$Record.Territory__c}=&apos;Benelux&apos;), &apos;0058d000004UevDAAS&apos;,
+IF(OR({!$Record.Territory__c}=&apos;Poland&apos;,{!$Record.Territory__c}=&apos;France&apos;,{!$Record.Territory__c}=&apos;Spain&apos;  ), &apos;0058d000004Uf03AAC&apos;,
+IF({!$Record.Territory__c}=&apos;Vietnam&apos;, &apos;0058d000004UezaAAC&apos;,
+IF({!$Record.Territory__c}=&apos;Indonesia&apos;, &apos;0058d000004UevZAAS&apos;,
+IF({!$Record.Territory__c}=&apos;Taiwan&apos;, &apos;0058d000004UexHAAS&apos;,
+IF(OR({!$Record.Territory__c}=&apos;Thailand&apos;,{!$Record.Territory__c}=&apos;Philippines&apos; ), &apos;0058d000004UezaAAC&apos;,
+IF({!$Record.Territory__c}=&apos;Brazil&apos;, &apos;0058d000004XFwCAAW&apos;,
+IF(OR({!$Record.Territory__c}=&apos;Mexico&apos;,{!$Record.Territory__c}=&apos;South Cone&apos;) , &apos;0058d000004Uew9AAC&apos;,
+IF(OR({!$Record.Territory__c}=&apos;Singapore&apos;,{!$Record.Territory__c}=&apos;Malaysia&apos;,{!$Record.Territory__c}=&apos;Hong Kong&apos;,{!$Record.Territory__c}=&apos;Australia&apos;) , &apos;0058d000004UevBAAS&apos;,
+IF({!$Record.Territory__c}=&apos;Korea&apos;, &apos;0058d000004UevAAAS&apos;,
+IF({!$Record.Territory__c}=&apos;Russia&apos;, &apos;0058d000004Uf09AAC&apos;,
+IF({!$Record.Territory__c}=&apos;United States&apos;, &apos;0058d000001tM0OAAU&apos;,
+IF({!$Record.Territory__c}=&apos;Turkey&apos;, &apos;0058d000004UeuZAAS&apos;,&apos;0058d000002zdsZAAQ&apos;))))))))))))))</expression>
+    </formulas>
+    <interviewLabel>Inone - Task Creation for Closed Won Opp {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Inone - Task Creation for Closed Won Opp</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Task</name>
+        <label>Task</label>
+        <locationX>536</locationX>
+        <locationY>839</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>dueDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>The Account Director should be assigned to the related Inone object, you can reach this inone object from customer object or closed won opportunity object. Please assign an Account Director to the Inones, which means you need to fill Account Director Field in the Inone Object in SF. You can check the documents.  https://docs.google.com/spreadsheets/d/1w1kiZ9WsxwsWiO_q6CI455DNOadqxZ1WpAOl5BLkpic/edit#gid=1444872986 &amp; https://docs.google.com/presentation/d/1_HkgnOFmRTPJN5n5xYNk5n7HtT1ZmeH5NAja1ZOZaLo/edit#slide=id.g20fb0a8785c_0_119</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>userId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Please assign an Account Director to this Customer and to all Inone objects associated with.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>Get_InOne.InOne__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_InOne</name>
+        <label>Get InOne</label>
+        <locationX>536</locationX>
+        <locationY>383</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_User</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Opportunity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>InOneItem__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>410</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_InOne</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>user</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
+    </variables>
+    <variables>
+        <name>userId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

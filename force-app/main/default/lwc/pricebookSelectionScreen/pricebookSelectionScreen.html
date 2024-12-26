@@ -1,0 +1,32 @@
+<template>
+
+    <div class="container full-width">
+        <div class="header full-width slds-border_bottom slds-text-heading_medium slds-theme_shade slds-p-horizontal_medium slds-p-vertical_large">
+            <div class="slds-button-group">
+                <lightning-icon icon-name="standard:pricebook" class="slds-m-right_small"></lightning-icon>
+                <h2>Choose Pricebook</h2>
+            </div>
+        </div>
+
+        <div class="body full-width medium-content slds-scrollable_y">
+            <div class="slds-p-horizontal_medium slds-p-vertical_large">
+                
+                <lightning-combobox
+                    label="Select a Pricebook"
+                    placeholder="Select Pricebook"
+                    options={options}
+                    onchange={handleChange}>
+                </lightning-combobox>
+
+            </div>
+        </div>
+
+        <div class="footer full-width slds-border_top">
+            <div class="slds-button-group slds-p-around_small slds-text-body_small">
+                <lightning-button onclick={onclickCancel} variant="neutral" label="Cancel"></lightning-button>
+                <lightning-button onclick={onclickNext} variant="brand" label="Next" class="slds-m-left_small"></lightning-button>
+            </div>
+        </div>
+    </div>
+
+</template>

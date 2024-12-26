@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>STAGE</name>
+        <label>STAGE</label>
+        <locationX>1370</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>X1_Resource_Allocation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>1. Resource Allocation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X1_UPDATE</targetReference>
+            </connector>
+            <label>1. Resource Allocation</label>
+        </rules>
+        <rules>
+            <name>X2_Initiation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>2. Initiation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X2_UPDATE</targetReference>
+            </connector>
+            <label>2. Initiation</label>
+        </rules>
+        <rules>
+            <name>X3_Planning_Design</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>3. Planning &amp; Design</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X3_UPDATE</targetReference>
+            </connector>
+            <label>3. Planning &amp; Design</label>
+        </rules>
+        <rules>
+            <name>X4_Configuration</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>4. Configuration</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X4_UPDATE</targetReference>
+            </connector>
+            <label>4. Configuration</label>
+        </rules>
+        <rules>
+            <name>X5_UAT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>5. UAT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X5_UPDATE</targetReference>
+            </connector>
+            <label>5. UAT</label>
+        </rules>
+        <rules>
+            <name>X6_Training_Enablement</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>6. Training &amp; Enablement</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X6_UPDATE</targetReference>
+            </connector>
+            <label>6. Training &amp; Enablement</label>
+        </rules>
+        <rules>
+            <name>X7_Go_Live</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>7. Go-Live</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X7_UPDATE</targetReference>
+            </connector>
+            <label>7. Go-Live</label>
+        </rules>
+        <rules>
+            <name>X8_Optimization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>8. Optimization</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X8_UPDATE</targetReference>
+            </connector>
+            <label>8. Optimization</label>
+        </rules>
+        <rules>
+            <name>X9_Scope_Review_Sign_off</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>9. Scope Review &amp; Sign-off</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X9_UPDATE</targetReference>
+            </connector>
+            <label>9. Scope Review &amp; Sign-off</label>
+        </rules>
+        <rules>
+            <name>X10_Post_Onboarding_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Implementation_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>10. Post-Onboarding Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X10_UPDATE</targetReference>
+            </connector>
+            <label>10. Post-Onboarding Review</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Implementation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Implementation Stage Update Date Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>X10_UPDATE</name>
+        <label>10. UPDATE</label>
+        <locationX>2426</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Post_Onboarding_Review_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X1_UPDATE</name>
+        <label>1. UPDATE</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Resource_Allocation_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X2_UPDATE</name>
+        <label>2. UPDATE</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Initiation_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X3_UPDATE</name>
+        <label>3. UPDATE</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Planning_and_Design_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X4_UPDATE</name>
+        <label>4. UPDATE</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Configuration_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X5_UPDATE</name>
+        <label>5. UPDATE</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>UAT_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X6_UPDATE</name>
+        <label>6. UPDATE</label>
+        <locationX>1370</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Enablement_Completion_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X7_UPDATE</name>
+        <label>7. UPDATE</label>
+        <locationX>1634</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>First_Go_Live_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X8_UPDATE</name>
+        <label>8. UPDATE</label>
+        <locationX>1898</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Optimization_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>X9_UPDATE</name>
+        <label>9. UPDATE</label>
+        <locationX>2162</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Scope_Signoff_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1244</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>STAGE</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2) OR (1 AND 3) OR (1 AND 4) OR (1 AND 5) OR (1 AND 6) OR (1 AND 7) OR (1 AND 8) OR (1 AND 9) OR (1 AND 10) OR (1 AND 11) OR (1 AND 12)</filterLogic>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1. Resource Allocation</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2. Initiation</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>3. Planning &amp; Design</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>4. Configuration</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>5. UAT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>6. Training &amp; Enablement</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>7. Go-Live</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>8. Optimization</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>9. Scope Review &amp; Sign-off</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>10. Post-Onboarding Review</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Implementation_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>11. Completed</stringValue>
+            </value>
+        </filters>
+        <object>Implementations__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
